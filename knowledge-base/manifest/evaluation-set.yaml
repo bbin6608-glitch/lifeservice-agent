@@ -1,0 +1,37 @@
+# Lifeservice-Agent 最小检索评测集 (v1.0)
+
+test_cases:
+  - id: source-01
+    dimension: 源码级自然语言问法
+    question: "seckill.lua 脚本里的返回值 2 代表什么意思？"
+    expected_doc: "seckill.lua"
+    expected_content: "重复下单"
+
+  - id: source-02
+    dimension: 源码级自然语言问法
+    question: "CacheClient 是如何防止缓存穿透的？"
+    expected_doc: "CacheClient.java"
+    expected_content: "CACHE_NULL_VALUE"
+
+  - id: cross-01
+    dimension: 跨文档综合问题
+    question: "App1 和 App2 在 Canal 监听上有什么具体差异？"
+    expected_doc: "app1-app2-differences.md"
+    expected_content: "App1 开启 Canal，App2 关闭"
+
+  - id: cross-02
+    dimension: 跨文档综合问题
+    question: "秒杀链路中，Redis、MQ 和 DB 分别承担什么职责？"
+    expected_doc: "32-seckill-order-flow.md"
+    expected_tags: ["redis", "rabbitmq", "db"]
+
+  - id: fuzzy-01
+    dimension: 模糊问法
+    question: "为什么这里要用异步削峰？"
+    expected_engine: "vector" # 语义理解应由向量层补足
+    expected_content: "解耦", "削峰"
+
+  - id: fuzzy-02
+    dimension: 模糊问法
+    question: "系统启动时会做哪些数据预热？"
+    expected_doc: "SeckillStockWarmUpRunner.java"

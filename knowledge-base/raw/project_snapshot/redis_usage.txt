@@ -1,0 +1,57 @@
+﻿CacheClient.java:10 import org.springframework.data.redis.core.StringRedisTemplate;
+CacheClient.java:31 private StringRedisTemplate stringRedisTemplate;
+CacheClient.java:61 stringRedisTemplate.opsForValue().set(key, JSONUtil.toJsonStr(value), ttlSeconds, TimeUnit.SECONDS);
+CacheClient.java:77 stringRedisTemplate.opsForValue().set(key, json);
+CacheClient.java:96 String json = stringRedisTemplate.opsForValue().get(key);
+CacheClient.java:115 stringRedisTemplate.opsForValue().set(key, CACHE_NULL_VALUE, CACHE_NULL_TTL, TimeUnit.MINUTES);
+CacheClient.java:152 stringRedisTemplate.opsForValue().set(key, CACHE_NULL_VALUE, CACHE_NULL_TTL, TimeUnit.MINUTES);
+CacheClient.java:179 String json = stringRedisTemplate.opsForValue().get(key);
+CacheClient.java:197 stringRedisTemplate.opsForValue().set(key, CACHE_NULL_VALUE, CACHE_NULL_TTL, TimeUnit.MINUTES);
+CacheClient.java:211 Boolean flag = stringRedisTemplate.opsForValue().setIfAbsent(key, token, 10, TimeUnit.SECONDS);
+CacheClient.java:216 stringRedisTemplate.execute(UNLOCK_SCRIPT, Collections.singletonList(key), token);
+CacheClient.java:224 stringRedisTemplate.delete(key);
+CacheInvalidationConsumer.java:7 import org.springframework.data.redis.core.StringRedisTemplate;
+CacheInvalidationConsumer.java:23 private StringRedisTemplate stringRedisTemplate;
+CacheInvalidationConsumer.java:40 stringRedisTemplate.delete(cacheKey);
+MvcConfig.java:6 import org.springframework.data.redis.core.StringRedisTemplate;
+MvcConfig.java:19 private StringRedisTemplate stringRedisTemplate;
+MvcConfig.java:36 registry.addInterceptor(new RefreshTokenInterceptor(stringRedisTemplate))
+SeckillStockWarmUpRunner.java:8 import org.springframework.data.redis.core.StringRedisTemplate;
+SeckillStockWarmUpRunner.java:26 private StringRedisTemplate stringRedisTemplate;
+SeckillStockWarmUpRunner.java:45 // 写入时转成字符串，StringRedisTemplate 只能操作 String
+SeckillStockWarmUpRunner.java:46 stringRedisTemplate.opsForValue().set(key, voucher.getStock().toString());
+UserServiceImpl.java:19 import org.springframework.data.redis.core.StringRedisTemplate;
+UserServiceImpl.java:42 private StringRedisTemplate stringRedisTemplate;
+UserServiceImpl.java:53 stringRedisTemplate.opsForValue().set(LOGIN_CODE_KEY + phone, code, LOGIN_CODE_TTL, TimeUnit.MINUTES);
+UserServiceImpl.java:67 String cacheCode = stringRedisTemplate.opsForValue().get(LOGIN_CODE_KEY + phone);
+UserServiceImpl.java:83 stringRedisTemplate.opsForHash().putAll(tokenKey, userMap);
+UserServiceImpl.java:84 stringRedisTemplate.expire(tokenKey, LOGIN_USER_TTL, TimeUnit.MINUTES);
+UserServiceImpl.java:95 stringRedisTemplate.delete(LOGIN_USER_KEY + token);
+UserServiceImpl.java:109 stringRedisTemplate.opsForValue().setBit(key, dayOfMonth - 1, true);
+UserServiceImpl.java:122 List<Long> result = stringRedisTemplate.opsForValue().bitField(
+VoucherOrderServiceImpl.java:17 import org.springframework.data.redis.core.StringRedisTemplate;
+VoucherOrderServiceImpl.java:36 private StringRedisTemplate stringRedisTemplate;
+VoucherOrderServiceImpl.java:59 Long result = stringRedisTemplate.execute(
+VoucherOrderServiceImpl.java:139 stringRedisTemplate.opsForValue().increment(stockKey);
+VoucherOrderServiceImpl.java:140 stringRedisTemplate.opsForSet().remove(orderKey, userId.toString());
+VoucherServiceImpl.java:14 import org.springframework.data.redis.core.StringRedisTemplate;
+VoucherServiceImpl.java:36 private StringRedisTemplate stringRedisTemplate;
+VoucherServiceImpl.java:44 String json = stringRedisTemplate.opsForValue().get(key);
+VoucherServiceImpl.java:52 stringRedisTemplate.opsForValue().set(key, JSONUtil.toJsonStr(vouchers), CACHE_VOUCHER_TTL, TimeUnit.MINUTES);
+VoucherServiceImpl.java:75 stringRedisTemplate.opsForValue().set(stockKey, voucher.getStock().toString());
+VoucherServiceImpl.java:88 stringRedisTemplate.delete(key);
+RedisIdWorker.java:3 import org.springframework.data.redis.core.StringRedisTemplate;
+RedisIdWorker.java:24 private StringRedisTemplate stringRedisTemplate;
+RedisIdWorker.java:26 public RedisIdWorker(StringRedisTemplate stringRedisTemplate) {
+RedisIdWorker.java:27 this.stringRedisTemplate = stringRedisTemplate;
+RedisIdWorker.java:40 long count = stringRedisTemplate.opsForValue().increment("icr:" + keyPrefix + ":" + date);
+RefreshTokenInterceptor.java:6 import org.springframework.data.redis.core.StringRedisTemplate;
+RefreshTokenInterceptor.java:22 private StringRedisTemplate stringRedisTemplate;
+RefreshTokenInterceptor.java:24 public RefreshTokenInterceptor(StringRedisTemplate stringRedisTemplate) {
+RefreshTokenInterceptor.java:25 this.stringRedisTemplate = stringRedisTemplate;
+RefreshTokenInterceptor.java:38 Map<Object, Object> userMap = stringRedisTemplate.opsForHash().entries(key);
+RefreshTokenInterceptor.java:52 stringRedisTemplate.expire(key, LOGIN_USER_TTL, TimeUnit.MINUTES);
+TokenGeneratorRunner.java:5 import org.springframework.data.redis.core.StringRedisTemplate;
+TokenGeneratorRunner.java:27 //    private StringRedisTemplate stringRedisTemplate;
+TokenGeneratorRunner.java:74 //                stringRedisTemplate.opsForHash().putAll(tokenKey, userMap);
+TokenGeneratorRunner.java:75 //                stringRedisTemplate.expire(tokenKey, Duration.ofMinutes(TOKEN_TTL_MINUTES));

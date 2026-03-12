@@ -1,0 +1,7 @@
+﻿CacheClient.java:11 import org.springframework.data.redis.core.script.DefaultRedisScript;
+CacheClient.java:39 private static final DefaultRedisScript<Long> UNLOCK_SCRIPT;
+CacheClient.java:42 UNLOCK_SCRIPT = new DefaultRedisScript<>();
+VoucherOrderServiceImpl.java:18 import org.springframework.data.redis.core.script.DefaultRedisScript;
+VoucherOrderServiceImpl.java:44 private static final DefaultRedisScript<Long> SECKILL_SCRIPT;
+VoucherOrderServiceImpl.java:46 SECKILL_SCRIPT = new DefaultRedisScript<>();
+VoucherOrderServiceImpl.java:47 SECKILL_SCRIPT.setLocation(new ClassPathResource("seckill.lua"));

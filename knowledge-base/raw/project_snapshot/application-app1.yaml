@@ -1,0 +1,7 @@
+server:
+  port: 8081
+app:
+  rabbitmq:
+    queue: cache.invalidate.queue.app1
+  canal:
+    enabled: true

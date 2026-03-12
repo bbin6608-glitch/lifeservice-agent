@@ -1,0 +1,64 @@
+﻿CacheClient.java:17 import java.util.concurrent.ExecutorService;
+CacheClient.java:37 private ExecutorService cacheRebuildExecutor;
+CacheClient.java:148 cacheRebuildExecutor.submit(() -> {
+CacheInvalidationPublisher.java:5 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+CacheInvalidationPublisher.java:16 private RabbitTemplate rabbitTemplate;
+CacheInvalidationPublisher.java:23 rabbitTemplate.convertAndSend(exchangeName, "", message);
+ShopCanalListener.java:1 package com.lifeservice.canal;
+ShopCanalListener.java:3 import com.alibaba.otter.canal.client.CanalConnector;
+ShopCanalListener.java:4 import com.alibaba.otter.canal.client.CanalConnectors;
+ShopCanalListener.java:5 import com.alibaba.otter.canal.protocol.CanalEntry;
+ShopCanalListener.java:6 import com.alibaba.otter.canal.protocol.Message;
+ShopCanalListener.java:10 import com.lifeservice.properties.CanalProperties;
+ShopCanalListener.java:21 import java.util.concurrent.ExecutorService;
+ShopCanalListener.java:24 * Canal Binlog 监听器 (重构版：集成 MQ 广播失效)
+ShopCanalListener.java:28 public class ShopCanalListener {
+ShopCanalListener.java:31 private CanalProperties canalProperties;
+ShopCanalListener.java:36 @Resource(name = "canalExecutorService")
+ShopCanalListener.java:37 private ExecutorService executorService;
+ShopCanalListener.java:39 @Value("${app.canal.enabled:true}")
+ShopCanalListener.java:42 private CanalConnector connector;
+ShopCanalListener.java:52 log.info("Canal 监听器已根据配置禁用。");
+ShopCanalListener.java:55 connector = CanalConnectors.newSingleConnector(
+ShopCanalListener.java:56 new InetSocketAddress(canalProperties.getHost(), canalProperties.getPort()),
+ShopCanalListener.java:57 canalProperties.getDestination(),
+ShopCanalListener.java:58 canalProperties.getUsername(),
+ShopCanalListener.java:59 canalProperties.getPassword()
+ShopCanalListener.java:62 executorService.submit(this::worker);
+ShopCanalListener.java:63 log.info("Canal 客户端（MQ 模式）启动成功。");
+ShopCanalListener.java:74 Message message = connector.getWithoutAck(canalProperties.getBatchSize());
+ShopCanalListener.java:87 log.error("处理 Canal 批次失败，准备回滚。batchId={}", batchId, e);
+ShopCanalListener.java:93 log.error("Canal 连接器错误，5秒后重试", e);
+ShopCanalListener.java:102 private void processEntries(long batchId, List<CanalEntry.Entry> entries) {
+ShopCanalListener.java:103 for (CanalEntry.Entry entry : entries) {
+ShopCanalListener.java:104 if (entry.getEntryType() != CanalEntry.EntryType.ROWDATA) {
+ShopCanalListener.java:108 CanalEntry.Header header = entry.getHeader();
+ShopCanalListener.java:116 CanalEntry.RowChange rowChange;
+ShopCanalListener.java:118 rowChange = CanalEntry.RowChange.parseFrom(entry.getStoreValue());
+ShopCanalListener.java:123 CanalEntry.EventType eventType = rowChange.getEventType();
+ShopCanalListener.java:129 for (CanalEntry.RowData rowData : rowChange.getRowDatasList()) {
+ShopCanalListener.java:130 List<CanalEntry.Column> columns = (eventType == CanalEntry.EventType.DELETE)
+ShopCanalListener.java:154 private boolean isDmlEvent(CanalEntry.EventType eventType) {
+ShopCanalListener.java:155 return eventType == CanalEntry.EventType.INSERT
+ShopCanalListener.java:156 || eventType == CanalEntry.EventType.UPDATE
+ShopCanalListener.java:157 || eventType == CanalEntry.EventType.DELETE;
+ShopCanalListener.java:160 private String getColumnValue(List<CanalEntry.Column> columns, String name) {
+ShopCanalListener.java:161 for (CanalEntry.Column column : columns) {
+ThreadPoolConfig.java:15 public class ThreadPoolConfig {
+ThreadPoolConfig.java:21 public ExecutorService cacheRebuildExecutor() {
+ThreadPoolConfig.java:22 return new ThreadPoolExecutor(
+ThreadPoolConfig.java:37 (r, executor) -> {
+ThreadPoolConfig.java:45 * Canal 消费专用线程池 (Spring 托管)
+ThreadPoolConfig.java:50 * - 线程特性：daemon = true，名称格式为 canal-shop-worker-x
+ThreadPoolConfig.java:53 public ExecutorService canalExecutorService() {
+ThreadPoolConfig.java:54 return new ThreadPoolExecutor(
+ThreadPoolConfig.java:65 t.setName("canal-shop-worker-" + threadNum.getAndIncrement());
+ThreadPoolConfig.java:70 (r, executor) -> {
+ThreadPoolConfig.java:71 log.error("Canal shop worker thread pool is full! Task rejected.");
+ThreadPoolConfig.java:72 throw new RejectedExecutionException("Canal shop worker task rejected");
+CanalProperties.java:8 * Canal 配置属性
+CanalProperties.java:12 @ConfigurationProperties(prefix = "app.canal")
+CanalProperties.java:13 public class CanalProperties {
+VoucherOrderServiceImpl.java:15 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+VoucherOrderServiceImpl.java:42 private RabbitTemplate rabbitTemplate;
+VoucherOrderServiceImpl.java:81 rabbitTemplate.convertAndSend(

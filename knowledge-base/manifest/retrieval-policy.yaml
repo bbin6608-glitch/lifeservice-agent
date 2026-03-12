@@ -1,0 +1,25 @@
+version: v1
+default_top_k: 6
+priority_buckets:
+  qa: [core-flow, runtime, middleware, api, faq]
+  ptest: [ptest, core-flow, middleware, runtime, api]
+rerank_signals:
+  - title_overlap
+  - tag_overlap
+  - endpoint_match
+  - class_match
+  - middleware_match
+  - section_priority
+filterable_fields:
+  - category
+  - usageScope
+  - tags
+  - endpoints
+  - classes
+  - middleware
+  - profiles
+  - sourceFiles
+notes:
+  - 优先返回已确认事实较多的 chunk，再补充合理推断段落。
+  - FAQ 文档按问答对切片；API 文档按接口组或控制器切片；链路文档按二级标题切片。
+  - 对于压测问题，提升 50-ptest、30-core-flows、40-middleware 类文档权重。

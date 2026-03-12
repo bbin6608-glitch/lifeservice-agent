@@ -1,0 +1,70 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: lifeservice-agent
+  datasource:
+    url: jdbc:postgresql://localhost:5432/agent_db
+    username: agent_user
+    password: YourStrongPassword123!
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  ai:
+    openai:
+      api-key:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode
+      chat:
+        options:
+          model: qwen3.5-plus
+      embedding:
+        options:
+          model: text-embedding-v3
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+agent:
+  app:
+    name: lifeservice-agent
+    version: v1
+  qa:
+    mode: local
+  llm:
+    enabled: false
+    provider: mock
+    model: mock
+    base-url:
+    api-key:
+  kb:
+    raw-path: ./knowledge-base/raw
+    curated-path: ./knowledge-base/curated
+    chunk-path: ./knowledge-base/chunks
+    index-path: ./knowledge-base/index
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  show-actuator: true
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+logging:
+  level:
+    com.lifeservice.agent: INFO

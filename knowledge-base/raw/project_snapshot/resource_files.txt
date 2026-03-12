@@ -1,0 +1,6 @@
+﻿E:\develop\hmdp\local-lifeservice\src\main\resources\application-app1.yaml
+E:\develop\hmdp\local-lifeservice\src\main\resources\application-app2.yaml
+E:\develop\hmdp\local-lifeservice\src\main\resources\application.yaml
+E:\develop\hmdp\local-lifeservice\src\main\resources\seckill.lua
+E:\develop\hmdp\local-lifeservice\src\main\resources\db\lifeservice.sql
+E:\develop\hmdp\local-lifeservice\src\main\resources\mapper\VoucherMapper.xml

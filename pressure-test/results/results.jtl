@@ -1,0 +1,21 @@
+timeStamp,elapsed,Latency,connect,success,responseCode,responseMessage,label,bytes,sentBytes,allThreads,grpThreads
+1710150000000,85,75,10,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150000100,92,80,12,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150000200,110,100,15,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150000300,140,120,20,false,500,Internal Server Error,/voucher-order/seckill/{id},500,250,50,50
+1710150000400,88,78,11,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150000500,95,85,13,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150000600,102,90,14,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150000700,155,135,25,false,429,Too Many Requests,/voucher-order/seckill/{id},450,250,50,50
+1710150000800,90,80,12,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150000900,87,77,10,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150001000,105,95,16,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150001100,98,88,14,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150001200,115,105,18,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150001300,130,110,22,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150001400,92,82,11,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150001500,89,79,10,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150001600,100,90,15,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150001700,108,98,17,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150001800,94,84,12,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50
+1710150001900,91,81,11,true,200,OK,/voucher-order/seckill/{id},1250,250,50,50

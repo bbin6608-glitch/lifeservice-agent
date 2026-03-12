@@ -1,0 +1,39 @@
+server:
+  port: ${PORT:8081}
+spring:
+  profiles:
+    active: app1
+  application:
+    name: lifeservice
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3307/lifeservice?useSSL=false&serverTimezone=UTC
+    username: root
+    password:
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+app:
+  rabbitmq:
+    exchange: cache.fanout.exchange
+    queue: ${APP_QUEUE:cache.invalidate.queue.default}
+  canal:
+    enabled: ${CANAL_ENABLED:true}
+    host: 127.0.0.1
+    port: 11111
+    destination: example
+    subscribe: lifeservice\\.tb_shop
+    batch-size: 100
+
+mybatis-plus:
+  type-aliases-package: com.lifeservice.entity
+logging:
+  level:
+    com.lifeservice: info

@@ -1,0 +1,4 @@
+label,samples,average,min,max,error%,throughput
+/voucher-order/seckill/{id},1000,95,45,320,1.5%,350.2
+/shop/{id},2000,42,12,150,0.05%,850.5
+/user/login,500,120,60,450,2.1%,120.8

@@ -1,0 +1,10 @@
+﻿E:\develop\hmdp\local-lifeservice\src\main\java\com\lifeservice\mapper\BlogCommentsMapper.java
+E:\develop\hmdp\local-lifeservice\src\main\java\com\lifeservice\mapper\BlogMapper.java
+E:\develop\hmdp\local-lifeservice\src\main\java\com\lifeservice\mapper\FollowMapper.java
+E:\develop\hmdp\local-lifeservice\src\main\java\com\lifeservice\mapper\SeckillVoucherMapper.java
+E:\develop\hmdp\local-lifeservice\src\main\java\com\lifeservice\mapper\ShopMapper.java
+E:\develop\hmdp\local-lifeservice\src\main\java\com\lifeservice\mapper\ShopTypeMapper.java
+E:\develop\hmdp\local-lifeservice\src\main\java\com\lifeservice\mapper\UserInfoMapper.java
+E:\develop\hmdp\local-lifeservice\src\main\java\com\lifeservice\mapper\UserMapper.java
+E:\develop\hmdp\local-lifeservice\src\main\java\com\lifeservice\mapper\VoucherMapper.java
+E:\develop\hmdp\local-lifeservice\src\main\java\com\lifeservice\mapper\VoucherOrderMapper.java
