@@ -2,7 +2,7 @@
 
 项目介绍：面向本地生活服务项目的垂直智能Agent系统，围绕项目知识问答、知识库管理与压测任务三类场景，构建集RAG检索、MCP工具调用、任务工作流于一体的Agent
 
-技术栈：Spring Boot、Spring AI、PostgreSQL、Lucene、Embedding、RAG、MCP、React、JMeter
+技术栈：Spring Boot、Spring AI、PostgreSQL、Lucene、Embedding、RAG、MCP、JMeter
 
 主要工作：
 
